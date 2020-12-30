@@ -1,3 +1,4 @@
+
 ## MAC files ##
 .DS_Store
 
@@ -24,3 +25,5 @@ coverage
 build/
 dist/
 
+# hide aws key
+*.pem

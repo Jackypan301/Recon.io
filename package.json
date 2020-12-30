@@ -1,17 +1,68 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
-  },
+  "name": "localsdowntownmodule-service",
+  "version": "1.0.0",
+  "description": "This Module shows the information of what locals say about the community.",
+  "main": "index.js",
   "scripts": {
+    "test": "jest",
+    "start": "nodemon server/index.js",
+    "build": "webpack --watch ",
+    "seed": "node seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLLS-Group9/LocalsDowntownModule-Service.git"
+  },
+  "author": "Jacky P",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JLLS-Group9/LocalsDowntownModule-Service/issues"
+  },
+  "homepage": "https://github.com/JLLS-Group9/LocalsDowntownModule-Service#readme",
   "dependencies": {
+    "-": "0.0.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@tensorflow-models/coco-ssd": "^2.1.0",
+    "@tensorflow/tfjs": "^2.4.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "D": "^1.0.0",
+    "chai": "^4.2.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "react": "^17.0.1",
+    "react-modal": "^3.11.2",
+    "react-scripts": "^4.0.1",
+    "react-webcam": "^5.2.0",
+    "sinon": "^9.2.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "axios": "^0.21.0",
+    "babel-loader": "^8.2.1",
+    "bluebird": "^3.7.2",
+    "css-loader": "^5.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "faker": "^5.1.0",
+    "jest": "^26.6.3",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
+    "mongoose": "^5.10.13",
+    "mysql": "^2.18.1",
+    "react-dom": "^17.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
   }
 }

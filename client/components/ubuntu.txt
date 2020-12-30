@@ -1,0 +1,15 @@
+to do
+1. install node
+2. install git
+3. clone down repo
+4. install dependencies
+5. download install mongo
+6. seed db
+7. start server
+8. pm2 // allow server to run
+
+
+goal is to put proxy on awas
+     ///handle aws app on proxy
+
+ssh -i "DemoSerive.pem" ubuntu@ec2-3-20-225-2.us-east-2.compute.amazonaws.com
