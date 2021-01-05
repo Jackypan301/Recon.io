@@ -3,9 +3,9 @@ export const drawReact = (detections, ctx) => {
     const [x,y,width,height] = prediction['bbox'];
     const text = prediction['class'];
 
-    const color = 'black'
+    const color = 'white'
     ctx.strokeSylt = color
-    ctx.font = '18px Arial'
+    ctx.font = '25px Arial'
     ctx.fillstyle = color
 
     ctx.beginPath()

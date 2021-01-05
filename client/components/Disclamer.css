@@ -1,0 +1,54 @@
+.Modal{
+  position: absolute; /* stays fixed on window */
+  z-index: 9; /* on top of current content */
+  left: 0;
+  right: 0;
+  width: 800px; /* fills the enire width of page */
+  height: 800px;
+  background-color: rgba(0,0,0,0.4);
+  margin-left: auto;
+  margin-right: auto;  /* last value is the tranparency */
+  text-align: center;
+  border-radius: 20px;
+}
+
+.form{
+  backdrop-filter: blur(2px);
+  background-color: rgba(0,0,0,0.4);
+  width: 800px;
+  height: 800px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* this is roughtly 48px from top bottom */
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.text{
+  font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color: white;
+  margin: 5%;
+}
+
+.textfield{
+  font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color: black;
+  margin: 5%;
+}
+
+.submit{
+  font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  color: black;
+  margin: 5%;
+  border-radius: 10%;
+}

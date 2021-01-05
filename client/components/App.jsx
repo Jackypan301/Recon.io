@@ -1,21 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
-// 1. TODO - Import required model here
-// e.g. import * as tfmodel from "@tensorflow-models/tfmodel";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
-import "./App.css";
-// 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
+import style from "./App.css";
 import { drawReact } from "./utlities.js";
+import Disclamer from "./Disclamer.jsx"
+
 
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-
   // Main function
   const runCoco = async () => {
-    // 3. TODO - Load network
+    // 3.  Load network
     // e.g. const net = await cocossd.load();
     const net = await cocossd.load();
     //  Loop and detect hands
@@ -23,7 +20,7 @@ function App() {
       detect(net);
     }, 10);
   };
-
+  const [identify, setIdentify] = useState([]);
   const detect = async (net) => {
     // Check data is available
     if (
@@ -44,24 +41,27 @@ function App() {
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
-      // 4. TODO - Make Detections
+      // Make Detections
       // e.g. const obj = await net.detect(video);
       const obj = await net.detect(video);
-      console.log(obj);
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
-      // 5. TODO - Update drawing utility
+      // 5. Update drawing utility
       // drawSomething(obj, ctx)
       drawReact(obj, ctx);
     }
   };
 
   useEffect(()=>{runCoco()},[]);
+  const [count, setCount] = useState(false);
+  const [form , setForm] = useState(true);
+  const togglelogin = () => setForm(value => !value);
+
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={style.App}>
+      <header >
         <Webcam
           ref={webcamRef}
           muted={true}
@@ -72,9 +72,9 @@ function App() {
             left: 0,
             right: 0,
             textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
+            zindex: 8,
+            width: 840,
+            height: 680,
           }}
         />
 
@@ -87,12 +87,19 @@ function App() {
             left: 0,
             right: 0,
             textAlign: "center",
-            zindex: 8,
-            width: 640,
-            height: 480,
+            zindex: 7,
+            width: 840,
+            height: 680,
           }}
         />
       </header>
+      <Disclamer form={form} login={togglelogin} />
+      <div >
+
+        <button className={style.submit} onClick={() => togglelogin()}>
+          Login into Account
+        </button>
+      </div>
     </div>
   );
 }
