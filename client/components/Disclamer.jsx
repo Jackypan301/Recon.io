@@ -15,7 +15,6 @@ function Disclamer(props) {
   };
 
   if (props.form) {
-    {console.log(props.login)};
   return (
     <div className={style.Modal} >
 
@@ -25,7 +24,7 @@ function Disclamer(props) {
 
 Further, you agree that in conjunction with your use of the Services you will not make available any unlawful, inappropriate, or commercial Content (defined below). You agree that you will not submit inaccurate, misleading, or inappropriate Content, including data submissions, edits, or removal requests.
 
-Niantic does not intend Apps to be medical or health devices, or provide medical or health advice. </p>
+Jacky does not intend Apps to be medical or health devices, or provide medical or health advice. </p>
       <label className={style.text}>
         Email:
         <input
@@ -35,6 +34,7 @@ Niantic does not intend Apps to be medical or health devices, or provide medical
           value={form.username}
           name="username"
           onChange={updateField}
+          required
         />
       </label>
       <br />
@@ -47,10 +47,11 @@ Niantic does not intend Apps to be medical or health devices, or provide medical
           name="password"
           type="password"
           onChange={updateField}
+          required
         />
       </label >
       <br />
-      <button className={style.submit} onClick={() => {event.preventDefault(); props.login()}}>Submit</button>
+      <button className={style.submit} onClick={() => {event.preventDefault(); props.login(); props.finduser(form);}}>Submit</button>
     </form>
 
     </div>

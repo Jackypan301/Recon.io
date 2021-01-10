@@ -4,8 +4,9 @@ const port = 8000
 const path = require('path');
 const fs = require('fs')
 const Promise = require('bluebird')
-const Property = require("../db/models/property.js")
 const compression = require('compression')
+const db = require('../db/index.js');
+const findRsvpAndUpdate = require('../db/controllers/findlogin.js');
 
 app.use(compression())
 app.use('/', express.static('public'))
@@ -18,16 +19,17 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/api/homes/:id/reviews', (req, res) => {
-  Property.findOne((req.params.id), (err,data) => {
+app.get('/login', (req, res) => {
+  findRsvpAndUpdate(req.body, (err, success) => {
     if (err) {
-      console.log(req.params.id)
-      res.send(err)
+      console.log(err)
+      res.sendStatus(404)
     } else {
-      console.log(data)
-      res.header("Content-Type",'application/json').send(JSON.stringify(data, 0, 2))
+      console.log(success)
+      res.sendStatus(200)
     }
-  })
+  });
+
 })
 
 

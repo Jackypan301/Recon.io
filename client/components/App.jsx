@@ -3,17 +3,17 @@ import * as tf from "@tensorflow/tfjs";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import style from "./App.css";
-import { drawReact } from "./utlities.js";
+import { drawReact } from "./canvas.js";
 import Disclamer from "./Disclamer.jsx"
-
+import Welcome from "./Welcome.jsx"
+import axios from "axios";
 
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  // Main function
+
   const runCoco = async () => {
-    // 3.  Load network
-    // e.g. const net = await cocossd.load();
+
     const net = await cocossd.load();
     //  Loop and detect hands
     setInterval(() => {
@@ -22,42 +22,47 @@ function App() {
   };
   const [identify, setIdentify] = useState([]);
   const detect = async (net) => {
-    // Check data is available
+
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
-      // Get Video Properties
+
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
 
-      // Set video width
+
       webcamRef.current.video.width = videoWidth;
       webcamRef.current.video.height = videoHeight;
 
-      // Set canvas height and width
+
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
-      // Make Detections
-      // e.g. const obj = await net.detect(video);
+
       const obj = await net.detect(video);
-      // Draw mesh
+
       const ctx = canvasRef.current.getContext("2d");
 
-      // 5. Update drawing utility
-      // drawSomething(obj, ctx)
+
       drawReact(obj, ctx);
     }
   };
 
   useEffect(()=>{runCoco()},[]);
-  const [count, setCount] = useState(false);
+
+  const [user, setUser] = useState('');
   const [form , setForm] = useState(true);
   const togglelogin = () => setForm(value => !value);
-
+  const finduser = (loginInfo) => {
+    axios.get(`${window.location.pathname}login`, {
+      username: loginInfo.username,
+      password: loginInfo.password
+    })
+    .then((res) => (setUser(loginInfo.username)))
+  }
 
   return (
     <div className={style.App}>
@@ -93,12 +98,13 @@ function App() {
           }}
         />
       </header>
-      <Disclamer form={form} login={togglelogin} />
+      <Disclamer form={form} login={togglelogin} finduser={finduser}/>
       <div >
 
         <button className={style.submit} onClick={() => togglelogin()}>
           Login into Account
         </button>
+        <Welcome form={form} user={user}/>
       </div>
     </div>
   );
